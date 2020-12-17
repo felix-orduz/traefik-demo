@@ -1,0 +1,19 @@
+version:  "3.7"
+services: 
+  proxy:
+    image: traefik:2.4
+    command: --provider.docker
+    ports: 
+      - "80:80"
+    volumes: 
+      - /var/run/docker.sock:/var/run/docker.sock
+  
+  nginx:
+    image: nginx
+    labels: 
+      - "traefik.http.routers.nginx.rule=Host(`nginx.felixorduz.dev`)"
+
+  apache:
+    image: httpd
+    labels: 
+      - "traefik.http.routers.nginx.rule=Host(`apache.felixorduz.dev`)"
