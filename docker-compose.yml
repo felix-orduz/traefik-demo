@@ -16,4 +16,4 @@ services:
   apache:
     image: httpd
     labels: 
-      - "traefik.http.routers.nginx.rule=Host(`apache.felixorduz.dev`)"
+      - "traefik.http.routers.apache.rule=Host(`apache.felixorduz.dev`)"
